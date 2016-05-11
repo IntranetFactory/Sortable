@@ -598,6 +598,9 @@
 				if (revert) {
 					_cloneHide(true);
 
+					if (options.downgradeDragEl) {
+						options.downgradeDragEl(dragEl);
+					}
 					if (cloneEl || nextEl) {
 						rootEl.insertBefore(dragEl, cloneEl || nextEl);
 					}
@@ -680,6 +683,9 @@
 							if (after && !nextSibling) {
 								el.appendChild(dragEl);
 							} else {
+								if (options.upgradeDragEl) {
+									options.upgradeDragEl(dragEl);
+								}
 								target.parentNode.insertBefore(dragEl, after ? nextSibling : target);
 							}
 						}
